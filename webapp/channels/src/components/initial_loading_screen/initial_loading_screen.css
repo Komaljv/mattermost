@@ -39,11 +39,12 @@ body {
 /* Apply dark mode based on OS preference automatically */
 @media (prefers-color-scheme: dark) {
     .LoadingScreen {
-        --background-color: #191B1F;
-        --background-gradient: linear-gradient(152deg, rgba(221, 223, 228, 0.00) 0%, rgba(221, 223, 228, 0.04) 80, #191B1F);
-        --background-texture: rgba(221, 223, 228, 0.04);
-        --gradient-center-color: #1B1D22;
-        --gradient-edge-color: rgba(27, 29, 34, 0);
+        /* Keep a white background regardless of OS theme */
+        --background-color: #ffffff;
+        --background-gradient: linear-gradient(152deg, rgba(63, 67, 80, 0.00) 0%, rgba(63, 67, 80, 0.04) 80%, #FFFFFF);
+        --background-texture: rgba(63, 67, 80, 0.04);
+        --gradient-center-color: #FFF;
+        --gradient-edge-color: rgba(255, 255, 255, 0);
     }
 }
 
@@ -98,6 +99,34 @@ body {
 }
 .LoadingAnimation svg {
     color: var(--colour);
+}
+
+.LoadingAnimation__brainerhub-logo {
+    width: 180px;
+    height: auto;
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.LoadingAnimation--loading .LoadingAnimation__brainerhub-logo {
+    animation: BrainerhubLogo__pulse 900ms ease-in-out infinite;
+}
+
+.LoadingAnimation--loaded .LoadingAnimation__brainerhub-logo {
+    animation: none;
+}
+
+@keyframes BrainerhubLogo__pulse {
+    0% {
+        transform: scale3d(0.95, 0.95, 1);
+    }
+    50% {
+        transform: scale3d(1.05, 1.05, 1);
+    }
+    100% {
+        transform: scale3d(0.95, 0.95, 1);
+    }
 }
 .LoadingAnimation .LoadingAnimation__spinner-gradient-color {
     stop-color: var(--colour);

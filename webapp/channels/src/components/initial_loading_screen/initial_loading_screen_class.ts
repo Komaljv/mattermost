@@ -4,6 +4,8 @@
 import {Measure, measureAndReport} from 'utils/performance_telemetry';
 import {isDesktopApp} from 'utils/user_agent';
 
+import brainerhubLogoPng from '../../../../../../../.cursor/projects/home-python-g-Documents-mattermost/assets/brainerhub_logo-d5bc9bc5-51a8-4be7-a774-6fb3bb3d030a.png';
+
 const ANIMATION_CLASS_FOR_MATTERMOST_LOGO_HIDE = 'LoadingAnimation__compass-shrink';
 const ANIMATION_CLASS_FOR_COMPLETE_LOADER_HIDE = 'LoadingAnimation__shrink';
 
@@ -15,6 +17,8 @@ const LOADING_COMPLETE_CLASS_FOR_SCREEN = 'LoadingScreen LoadingScreen--loaded';
 const STATIC_CLASS_FOR_ANIMATION = 'LoadingAnimation';
 const LOADING_CLASS_FOR_ANIMATION = 'LoadingAnimation LoadingAnimation--spinning LoadingAnimation--loading';
 const LOADING_COMPLETE_CLASS_FOR_ANIMATION = 'LoadingAnimation LoadingAnimation--spinning LoadingAnimation--loaded';
+
+const BRANERHUB_LOGO_CLASS = 'LoadingAnimation__brainerhub-logo';
 
 export class InitialLoadingScreenClass {
     private isLoading: boolean | null = true;
@@ -116,6 +120,25 @@ export class InitialLoadingScreenClass {
 
         this.loadingScreenElement.className = LOADING_CLASS_FOR_SCREEN;
         this.loadingAnimationElement.className = LOADING_CLASS_FOR_ANIMATION;
+
+        this.renderBrainerhubLogo();
+    }
+
+    private renderBrainerhubLogo() {
+        if (!this.loadingAnimationElement) {
+            return;
+        }
+
+        // Replace the existing spinner/compass SVG with the provided logo.
+        this.loadingAnimationElement.innerHTML = '';
+
+        const logoImg = document.createElement('img');
+        logoImg.alt = 'Brainerhub';
+        logoImg.className = BRANERHUB_LOGO_CLASS;
+        logoImg.src = brainerhubLogoPng;
+        logoImg.draggable = false;
+
+        this.loadingAnimationElement.appendChild(logoImg);
     }
 
     public stop(pageType: string) {
