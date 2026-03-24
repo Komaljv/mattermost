@@ -4,7 +4,7 @@
 import {Measure, measureAndReport} from 'utils/performance_telemetry';
 import {isDesktopApp} from 'utils/user_agent';
 
-import brainerhubLogoPng from '../../../../../../../.cursor/projects/home-python-g-Documents-mattermost/assets/brainerhub_logo-d5bc9bc5-51a8-4be7-a774-6fb3bb3d030a.png';
+import brainerhubLogoPng from 'images/brainerhub_logo.png';
 
 const ANIMATION_CLASS_FOR_MATTERMOST_LOGO_HIDE = 'LoadingAnimation__compass-shrink';
 const ANIMATION_CLASS_FOR_COMPLETE_LOADER_HIDE = 'LoadingAnimation__shrink';
