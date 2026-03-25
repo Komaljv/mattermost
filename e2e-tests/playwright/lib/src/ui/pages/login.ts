@@ -18,7 +18,7 @@ export default class LoginPage {
     readonly passwordInput;
     readonly passwordToggleButton;
     readonly signInButton;
-    readonly createAccountLink;
+    // readonly createAccountLink;
     readonly forgotPasswordLink;
     readonly userErrorLabel;
     readonly fieldWithError;
@@ -39,7 +39,7 @@ export default class LoginPage {
         this.passwordInput = page.locator('#input_password-input');
         this.passwordToggleButton = page.locator('#password_toggle');
         this.signInButton = page.locator('button:has-text("Log in")');
-        this.createAccountLink = page.locator("text=Don't have an account?");
+        // this.createAccountLink = page.locator("text=Don't have an account?");
         this.forgotPasswordLink = page.locator('text=Forgot your password?');
         this.userErrorLabel = page.locator('text=Please enter your email or username');
         this.fieldWithError = page.locator('.with-error');

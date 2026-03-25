@@ -52,7 +52,7 @@ const Header = ({alternateLink, backButtonURL, onBackButtonClick}: HeaderProps) 
                             to='/'
                             aria-label={ariaLabel}
                         >
-                            {freeBanner}
+                            {/* {freeBanner} */}
                         </Link>
                     }
                     {title &&

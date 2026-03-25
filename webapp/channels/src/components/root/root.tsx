@@ -356,10 +356,10 @@ export default class Root extends React.PureComponent<Props, State> {
                         path={'/help/:page?'}
                         component={Help}
                     />
-                    <Route
+                    {/* <Route
                         path={'/landing'}
                         component={LinkingLandingPage}
-                    />
+                    /> */}
                     {this.props.isDevModeEnabled && (
                         <Route
                             path={'/component_library'}

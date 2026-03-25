@@ -63,7 +63,7 @@ export const AdminSection = styled.section.attrs({className: 'AdminPanel'})`
 export const PlaceholderHeading = styled.h4`
     && {
         font-size: 20px;
-        font-family: 'Metropolis', sans-serif;
+        font-family: 'Lato', sans-serif;
         font-weight: 600;
         line-height: 28px;
         margin-bottom: 4px;

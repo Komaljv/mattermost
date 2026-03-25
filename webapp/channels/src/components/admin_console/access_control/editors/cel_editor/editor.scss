@@ -19,7 +19,7 @@
             top: 13px;
             left: 30px;
             color: rgba(0,0,0, 0.40);
-            font-family: monospace;
+            // font-family: monospace;
             font-size: 12px;
             pointer-events: none;
             user-select: none;
@@ -32,7 +32,7 @@
         right: 8px;
         border-radius: 4px;
         color: var(--button-color);
-        font-family: monospace;
+        // font-family: monospace;
         font-size: 12px;
         pointer-events: none;
     }
@@ -48,7 +48,7 @@
         padding: 12px;
         border: 1px solid var(--button-bg);
         border-radius: 4px 4px 0 0;
-        font-family: monospace;
+        // font-family: monospace;
         resize: vertical;
         transition: border-color 0.15s ease;
 
@@ -115,7 +115,7 @@
         padding: 0 8px;
         border-radius: 0 0 4px 4px;
         color: var(--button-color);
-        font-family: monospace;
+        //font-family: monospace; 
         font-size: 12px;
         transition: background-color 0.15s ease;
         

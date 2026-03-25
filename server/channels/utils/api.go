@@ -137,7 +137,7 @@ func RenderMobileMessage(w http.ResponseWriter, message string) {
 					body {
 						color: #333;
 						background-color: #fff;
-						font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+						font-family: Open Sans, sans-serif;
 						font-size: 14px;
 						line-height: 1.42857143;
 					}

@@ -1,6 +1,6 @@
 @use "utils/mixins";
 @use "utils/variables";
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap');
 b,
 strong {
     font-weight: 600;
@@ -28,16 +28,13 @@ a {
     }
 }
 
-body {
+body , p, a {
     @include mixins.font-smoothing;
-
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
-h1,
-h2,
-h3 {
-    font-family: Metropolis, sans-serif;
+h1, h2, h3 ,h4, h5, h6 ,li, ul, ol,label {
+    font-family: 'Lato', sans-serif;
 }
 
 h1 {
@@ -222,7 +219,7 @@ ol {
     h1,
     h2,
     h3 {
-        font-family: Metropolis, sans-serif;
+       font-family: 'Open Sans', sans-serif;
     }
 }
 

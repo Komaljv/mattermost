@@ -16,7 +16,7 @@ import LineLimiter from './components/linelimiter';
 const ChannelName = styled.div`
     margin-bottom: 12px;
     font-size: 20px;
-    font-family: Metropolis, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     letter-spacing: -0.01em;
 `;

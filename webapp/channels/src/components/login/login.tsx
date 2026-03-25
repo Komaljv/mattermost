@@ -439,17 +439,17 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     const getAlternateLink = useCallback(() => {
         const linkLabel = formatMessage({
             id: 'login.noAccount',
-            defaultMessage: 'Don\'t have an account?',
+            defaultMessage: '',
         });
-        if (showSignup) {
-            return (
-                <AlternateLinkLayout
-                    className='login-body-alternate-link'
-                    alternateLinkPath={'/signup_user_complete'}
-                    alternateLinkLabel={linkLabel}
-                />
-            );
-        }
+        // if (showSignup) {
+        //     return (
+        //         <AlternateLinkLayout
+        //             className='login-body-alternate-link'
+        //             alternateLinkPath={'/signup_user_complete'}
+        //             alternateLinkLabel={linkLabel}
+        //         />
+        //     );
+        // }
         return (
             <AlternateLinkLayout
                 className='login-body-alternate-link'
@@ -470,12 +470,12 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     }, [emailParam, extraParam]);
 
     useEffect(() => {
-        if (onCustomizeHeader) {
-            onCustomizeHeader({
-                onBackButtonClick: (showMfa || desktopLoginLink) ? handleHeaderBackButtonOnClick : undefined,
-                alternateLink: isMobileView ? getAlternateLink() : undefined,
-            });
-        }
+        // if (onCustomizeHeader) {
+        //     onCustomizeHeader({
+        //         onBackButtonClick: (showMfa || desktopLoginLink) ? handleHeaderBackButtonOnClick : undefined,
+        //         alternateLink: isMobileView ? getAlternateLink() : undefined,
+        //     });
+        // }
     }, [onCustomizeHeader, search, showMfa, desktopLoginLink, isMobileView, getAlternateLink]);
 
     useEffect(() => {
@@ -970,7 +970,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                     {getMessageSubtitle()}
                 </div>
                 <div className='login-body-action'>
-                    {!isMobileView && getAlternateLink()}
+                    {/* {!isMobileView && getAlternateLink()} */}
                     <div className={classNames('login-body-card', {'custom-branding': enableCustomBrand, 'with-error': hasError})}>
                         <div
                             className='login-body-card-content'
