@@ -237,5 +237,39 @@ describe('components/global/product_switcher_menu', () => {
             await userEvent.click(screen.getByText('Integrations'));
             expect(container).toMatchSnapshot();
         });
+
+        it('should hide integrations for non-admin', () => {
+            const props = {
+                ...defaultProps,
+                enableIncomingWebhooks: true,
+                teamName: 'test-team',
+            };
+            const {container} = renderWithContext(<ProductMenuList {...props}/>, nonAdminState);
+            expect(container.querySelector('#integrations')).toBeNull();
+        });
+
+        it('should hide marketplace for non-admin', () => {
+            const props = {
+                ...defaultProps,
+                enablePluginMarketplace: true,
+                isMessaging: true,
+            };
+            const {container} = renderWithContext(<ProductMenuList {...props}/>, nonAdminState);
+            expect(container.querySelector('#marketplaceModal')).toBeNull();
+        });
+
+        it('should hide download apps for non-admin', () => {
+            const props = {
+                ...defaultProps,
+                appDownloadLink: 'test-link',
+            };
+            const {container} = renderWithContext(<ProductMenuList {...props}/>, nonAdminState);
+            expect(container.querySelector('#nativeAppLink')).toBeNull();
+        });
+
+        it('should hide about for non-admin', () => {
+            const {container} = renderWithContext(<ProductMenuList {...defaultProps}/>, nonAdminState);
+            expect(container.querySelector('#about')).toBeNull();
+        });
     });
 });

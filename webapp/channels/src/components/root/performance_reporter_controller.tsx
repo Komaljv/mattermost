@@ -17,14 +17,14 @@ export default function PerformanceReporterController() {
     const reporter = useRef<PerformanceReporter>();
 
     useEffect(() => {
-        reporter.current = new PerformanceReporter(Client4, store, DesktopAppAPI);
-        reporter.current.observe();
+       // reporter.current = new PerformanceReporter(Client4, store, DesktopAppAPI);
+      //  reporter.current.observe();
 
         // There's no way to clean up web-vitals, so continue to assume that this component won't ever be unmounted
-        return () => {
-            // eslint-disable-next-line no-console
-            console.error('PerformanceReporterController - Component unmounted or store changed');
-        };
+        // return () => {
+        //     // eslint-disable-next-line no-console
+        //     console.error('PerformanceReporterController - Component unmounted or store changed');
+        // };
     }, [store]);
 
     return null;

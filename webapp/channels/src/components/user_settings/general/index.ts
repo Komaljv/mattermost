@@ -15,6 +15,7 @@ import {
     getCustomProfileAttributeValues,
 } from 'mattermost-redux/actions/users';
 import {getConfig, getCustomProfileAttributes, getFeatureFlagValue, getLicense} from 'mattermost-redux/selectors/entities/general';
+import {isCurrentUserSystemAdmin} from 'mattermost-redux/selectors/entities/users';
 
 import {getIsMobileView} from 'selectors/views/browser';
 
@@ -59,6 +60,7 @@ function mapStateToProps(state: GlobalState) {
         ldapPositionAttributeSet,
         ldapPictureAttributeSet,
         enableCustomProfileAttributes,
+        isSystemAdmin: isCurrentUserSystemAdmin(state),
     };
 }
 

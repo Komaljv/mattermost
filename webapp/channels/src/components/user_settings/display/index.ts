@@ -37,12 +37,15 @@ import UserSettingsDisplay from './user_settings_display';
 export function makeMapStateToProps() {
     return (state: GlobalState, props: OwnProps) => {
         const config = getConfig(state);
+    
         const currentUserId = getCurrentUserId(state);
         const userTimezone = props.adminMode ? getTimezoneForUserProfile(props.user) : getCurrentTimezoneFull(state);
         const automaticTimezoneNotSet = userTimezone && userTimezone.useAutomaticTimezone && !userTimezone.automaticTimezone;
         const shouldAutoUpdateTimezone = !userTimezone || automaticTimezoneNotSet;
         const timezoneLabel = props.adminMode ? generateCurrentTimezoneLabel(getUserCurrentTimezone(userTimezone)) : getCurrentTimezoneLabel(state);
-        const allowCustomThemes = config.AllowCustomThemes === 'true';
+        const allowCustomThemes = config.AllowCustomThemes === 'false';
+                // const allowCustomThemes = props.user.roles=='system_admin system_user' ?config.AllowCustomThemes==='true' :config.AllowCustomThemes === 'false';
+
         const enableLinkPreviews = config.EnableLinkPreviews === 'true';
         const enableThemeSelection = config.EnableThemeSelection === 'true';
         const lockTeammateNameDisplay = getLicense(state).LockTeammateNameDisplay === 'true' && config.LockTeammateNameDisplay === 'true';

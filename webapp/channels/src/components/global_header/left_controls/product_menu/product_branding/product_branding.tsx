@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import glyphMap, {ProductChannelsIcon} from '@mattermost/compass-icons/components';
 import type {IconGlyphTypes} from '@mattermost/compass-icons/IconGlyphs';
+import brainerhubLogoPng from 'images/brainerhub_logo.png';
 
 import {useCurrentProduct} from 'utils/products';
 
@@ -28,29 +29,20 @@ const ProductBrandingHeading = styled.span`
 const ProductBranding = (): JSX.Element => {
     const currentProduct = useCurrentProduct();
 
-    // Handle both string icon names and React elements
-    const renderIcon = () => {
-        if (!currentProduct?.switcherIcon) {
-            return <ProductChannelsIcon size={24}/>;
-        }
-
-        if (typeof currentProduct.switcherIcon === 'string') {
-            const Icon = glyphMap[currentProduct.switcherIcon as IconGlyphTypes];
-            if (Icon) {
-                return <Icon size={24}/>;
-            }
-
-            // Fallback if icon name not found in glyphMap
-            return <ProductChannelsIcon size={24}/>;
-        }
-
-        // React element - render directly
-        return <>{currentProduct.switcherIcon}</>;
-    };
+    // Render the BrainerHub logo as the main product icon in the header.
+    const renderIcon = () => (
+        <img
+            src={brainerhubLogoPng}
+            alt='BrainerHub Logo'
+            width={24}
+            height={24}
+            style={{borderRadius: '4px', objectFit: 'contain'}}
+        />
+    );
 
     return (
         <ProductBrandingContainer tabIndex={-1}>
-            {renderIcon()}
+            {/* {renderIcon()} */}
             <h1 className='sr-only'>
                 {currentProduct ? currentProduct.switcherText : 'Channels'}
             </h1>

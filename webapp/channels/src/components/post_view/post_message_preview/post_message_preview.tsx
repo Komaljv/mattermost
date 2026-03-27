@@ -130,7 +130,7 @@ const PostMessagePreview = (props: Props) => {
             <div className='post-preview'>
                 <div className='post-preview__header'>
                     <div className='col col__name'>
-                        <div className='post__img'>
+                        {/* <div className='post__img'>
                             <span className='profile-icon'>
                                 {
                                     user &&
@@ -142,7 +142,7 @@ const PostMessagePreview = (props: Props) => {
                                     />
                                 }
                             </span>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={classNames('col col__name', 'permalink--username')}>
                         <UserProfileComponent

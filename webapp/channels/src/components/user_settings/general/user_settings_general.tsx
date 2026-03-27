@@ -170,6 +170,7 @@ export type Props = {
     samlPositionAttributeSet?: boolean;
     ldapPictureAttributeSet?: boolean;
     enableCustomProfileAttributes: boolean;
+    isSystemAdmin: boolean;
 }
 
 type State = {
@@ -212,6 +213,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
+        
         if (this.props.enableCustomProfileAttributes && !this.props.user.custom_profile_attributes) {
             this.props.actions.getCustomProfileAttributeValues(this.props.user.id);
         }
@@ -554,6 +556,10 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
     };
 
     updateSection = (section: string) => {
+        // Prevent non-admin users from activating username/email sections
+        if ((section === 'username' || section === 'email') && this.props.user.auth_service === '' && !this.props.isSystemAdmin) {
+            return;
+        }
         this.setState(Object.assign({}, this.setupInitialState(this.props), {pictureError: '', serverError: '', emailError: '', sectionIsSaving: false}));
         this.submitActive = false;
         this.props.updateSection(section);
@@ -583,7 +589,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
     createEmailSection() {
         const {formatMessage} = this.props.intl;
 
-        const active = this.props.activeSection === 'email';
+        const active = this.props.activeSection === 'email' && (this.props.user.auth_service !== '' || this.props.isSystemAdmin);
         let max = null;
         if (active) {
             const emailVerificationEnabled = this.props.requireEmailVerification;
@@ -607,7 +613,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
 
             let submit = null;
 
-            if (this.props.user.auth_service === '') {
+            if (this.props.user.auth_service === '' && this.props.isSystemAdmin) {
                 inputs.push(
                     <div key='currentEmailSetting'>
                         <div className='form-group'>
@@ -841,6 +847,9 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                         {helpText}
                     </div>,
                 );
+            } else if (this.props.user.auth_service === '') {
+                // Non-admin users cannot edit email - section remains collapsed
+                max = null;
             }
 
             max = (
@@ -930,6 +939,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                 section={'email'}
                 updateSection={this.updateSection}
                 max={max}
+                isDisabled={this.props.user.auth_service === '' && !this.props.isSystemAdmin}
             />
         );
     }
@@ -1217,14 +1227,26 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
     createUsernameSection = () => {
         const {formatMessage} = this.props.intl;
 
-        const active = this.props.activeSection === 'username';
+        const active = this.props.activeSection === 'username' && (this.props.user.auth_service !== '' || this.props.isSystemAdmin);
         let max = null;
         if (active) {
             const inputs = [];
 
             let extraInfo;
             let submit = null;
-            if (this.props.user.auth_service === '') {
+            if (this.props.user.auth_service !== '') {
+                extraInfo = (
+                    <span>
+                        <FormattedMessage
+                            id='user.settings.general.field_handled_externally'
+                            defaultMessage='This field is handled through your login provider. If you want to change it, you need to do so through your login provider.'
+                        />
+                    </span>
+                );
+            } else if (!this.props.isSystemAdmin) {
+                // Non-admin users cannot edit username - section remains collapsed
+                max = null;
+            } else {
                 let usernameLabel: JSX.Element | string = (
                     <FormattedMessage
                         id='user.settings.general.username'
@@ -1284,15 +1306,6 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                 );
 
                 submit = this.submitUsername;
-            } else {
-                extraInfo = (
-                    <span>
-                        <FormattedMessage
-                            id='user.settings.general.field_handled_externally'
-                            defaultMessage='This field is handled through your login provider. If you want to change it, you need to do so through your login provider.'
-                        />
-                    </span>
-                );
             }
 
             max = (
@@ -1317,6 +1330,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                 section={'username'}
                 updateSection={this.updateSection}
                 max={max}
+                isDisabled={this.props.user.auth_service === '' && !this.props.isSystemAdmin}
             />
         );
     };

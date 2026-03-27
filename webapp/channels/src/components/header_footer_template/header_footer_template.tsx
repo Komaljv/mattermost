@@ -8,6 +8,7 @@ import {useSelector} from 'react-redux';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 
 import ExternalLink from 'components/external_link';
+import '../header_footer_route/footer.scss';
 
 type Props = {
     children?: React.ReactNode | React.ReactNodeArray;
@@ -100,8 +101,8 @@ const HeaderFooterNotLoggedIn = (props: Props) => {
         <div className='inner-wrap'>
             <div className='row content'>
                 {props.children}
-            </div>
-            <div className='row footer'>
+</div>
+            {/* <div className='row footer'>
                 <div
                     id='footer_section'
                     className='footer-pane col-xs-12'
@@ -126,7 +127,56 @@ const HeaderFooterNotLoggedIn = (props: Props) => {
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> */}
+ <div className='hfroute-footer'>
+            <span
+                key='footer-copyright'
+                className='footer-copyright'
+            >
+                {`© ${new Date().getFullYear()} Mattermost Inc.`}
+            </span>
+            {config.AboutLink && (
+                <ExternalLink
+                    key='footer-link-about'
+                    className='footer-link'
+                    href={config.AboutLink}
+                    location='footer'
+                >
+                    {formatMessage({id: 'web.footer.about', defaultMessage: 'About'})}
+                </ExternalLink>
+            )}
+            {config.PrivacyPolicyLink && (
+                <ExternalLink
+                    key='footer-link-privacy'
+                    className='footer-link'
+                    href={config.PrivacyPolicyLink}
+                    location='footer'
+                >
+                    {formatMessage({id: 'web.footer.privacy', defaultMessage: 'Privacy Policy'})}
+                </ExternalLink>
+            )}
+            {config.TermsOfServiceLink && (
+                <ExternalLink
+                    key='footer-link-terms'
+                    className='footer-link'
+                    href={config.TermsOfServiceLink}
+                    location='footer'
+                >
+                    {formatMessage({id: 'web.footer.terms', defaultMessage: 'Terms'})}
+                </ExternalLink>
+            )}
+            {config.HelpLink && (
+                <ExternalLink
+                    key='footer-link-help'
+                    className='footer-link'
+                    href={config.HelpLink}
+                    location='footer'
+                >
+                    {formatMessage({id: 'web.footer.help', defaultMessage: 'Help'})}
+                </ExternalLink>
+            )}
+        </div>
+            
         </div>
     );
 };

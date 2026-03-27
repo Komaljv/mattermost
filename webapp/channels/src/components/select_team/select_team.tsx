@@ -292,32 +292,9 @@ export default class SelectTeam extends React.PureComponent<Props, State> {
                                 defaultMessage='Teams you can join: '
                             />
                         </h4>
-                        <ExternalLink
-                            location='learn_about_teams'
-                            href={MATTERMOST_ACADEMY_TEAM_TRAINING_LINK}
-                            className='LearnAboutTeamsLink'
-                        >
-                            <i
-                                className='icon icon-lightbulb-outline'
-                                aria-hidden={true}
-                            />
-                            <FormattedMessage
-                                id='learn_about_teams'
-                                defaultMessage='Learn about teams'
-                            />
-                        </ExternalLink>
+                       
                     </div>
-                    <InfiniteScroll
-                        callBack={this.fetchMoreTeams}
-                        styleClass='signup-team-all'
-                        totalItems={totalTeamsCount}
-                        itemsPerPage={TEAMS_PER_PAGE}
-                        bufferValue={280}
-                        pageNumber={currentPage}
-                        loaderStyle={{padding: '0px', height: '40px'}}
-                    >
-                        {joinableTeamContents}
-                    </InfiniteScroll>
+                    
                 </div>
             );
         }

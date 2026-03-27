@@ -11,7 +11,6 @@ export default class TeamMenu {
     readonly manageMembers: Locator;
     readonly leaveTeam: Locator;
     readonly createTeam: Locator;
-    readonly learnAboutTeams: Locator;
 
     constructor(container: Locator) {
         this.container = container;
@@ -21,7 +20,6 @@ export default class TeamMenu {
         this.manageMembers = container.getByRole('menuitem', {name: 'Manage members'});
         this.leaveTeam = container.getByRole('menuitem', {name: 'Leave team'});
         this.createTeam = container.getByRole('menuitem', {name: 'Create a team'});
-        this.learnAboutTeams = container.getByRole('menuitem', {name: 'Learn about teams'});
     }
 
     async toBeVisible() {
@@ -52,7 +50,5 @@ export default class TeamMenu {
         await this.createTeam.click();
     }
 
-    async clickLearnAboutTeams() {
-        await this.learnAboutTeams.click();
-    }
+
 }

@@ -247,7 +247,7 @@ const SettingItemMax = ({
                     className='setting-list'
                 >
                     {listContent}
-                    <div className='setting-list-item'>
+                    {/* <div className='setting-list-item'>
                         <hr/>
                         {submitExtra}
                         <div
@@ -264,7 +264,7 @@ const SettingItemMax = ({
                         >
                             {cancelButtonText}
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

@@ -9,7 +9,7 @@ import type {UserProfile} from '@mattermost/types/users';
 import {ensureString} from 'mattermost-redux/utils/post_utils';
 
 import ProfilePicture from 'components/profile_picture';
-import MattermostLogo from 'components/widgets/icons/mattermost_logo';
+import defaultPostLogo from 'images/brainerhub-logo.png';
 
 import Constants, {UserStatuses} from 'utils/constants';
 import * as PostUtils from 'utils/post_utils';
@@ -34,7 +34,6 @@ export default class PostProfilePicture extends React.PureComponent<Props> {
 
     getProfilePictureURL = (): string => {
         const {post, user} = this.props;
-
         if (user && user.id === post.user_id) {
             return Utils.imageURLForUser(user.id, user.last_picture_update);
         } else if (post.user_id) {
@@ -86,8 +85,16 @@ export default class PostProfilePicture extends React.PureComponent<Props> {
         const fromWebhook = PostUtils.isFromWebhook(post);
 
         if (isSystemMessage && !compactDisplay && !fromWebhook && !isBot) {
-            return <MattermostLogo className='icon'/>;
+            return (
+                <img
+                    className='icon'
+                    src={defaultPostLogo}
+                    alt='Default post logo'
+                    loading='lazy'
+                />
+            );
         }
+
         const fromAutoResponder = PostUtils.fromAutoResponder(post);
 
         const profileSrc = this.getProfilePictureURL();

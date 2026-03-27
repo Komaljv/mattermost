@@ -62,6 +62,7 @@ describe('components/user_settings/general/UserSettingsGeneral', () => {
         samlPositionAttributeSet: false,
         ldapPictureAttributeSet: false,
         enableCustomProfileAttributes: false,
+        isSystemAdmin: true,
     };
 
     const customProfileAttribute: UserPropertyField = {

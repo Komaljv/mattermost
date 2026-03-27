@@ -44,12 +44,14 @@ button {
     justify-content: center;
     padding: 0 20px;
     border: none;
-    border-radius: var(--radius-s);
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     gap: 8px;
     outline: none !important;
     transition: all 0.15s ease;
+    // background: #BF4252!important;
+    // min-width:100% !important;
 
     &.btn-round {
         border-radius: 50%;

@@ -13,7 +13,6 @@ export default class NotificationsSettings {
     readonly expandedSection;
     public expandedSectionId = '.section-max';
 
-    readonly learnMoreText;
     readonly desktopAndMobileEditButton;
     readonly desktopNotificationSoundEditButton;
     readonly emailEditButton;
@@ -31,7 +30,6 @@ export default class NotificationsSettings {
         this.title = container.getByRole('heading', {name: 'Notifications', exact: true});
         this.expandedSection = container.locator(this.expandedSectionId);
 
-        this.learnMoreText = container.getByRole('link', {name: 'Learn more about notifications'});
         this.desktopAndMobileEditButton = container.locator('#desktopAndMobileEdit');
         this.desktopNotificationSoundEditButton = container.locator('#desktopNotificationSoundEdit');
         this.emailEditButton = container.locator('#emailEdit');

@@ -121,15 +121,16 @@ type ThemeTypeMap = Record<ThemeType | LegacyThemeType, ThemeKey>;
 // object mapping theme types to their respective keys for retrieving the source themes directly
 // - supports mapping old themes to new themes
 const themeTypeMap: ThemeTypeMap = {
-    Mattermost: 'denim',
-    Organization: 'sapphire',
-    'Mattermost Dark': 'indigo',
-    'Windows Dark': 'onyx',
+    // Mattermost: 'denim',
+    // Organization: 'sapphire',
+    // 'Mattermost Dark': 'indigo',
+    // 'Windows Dark': 'onyx',
     Denim: 'denim',
-    Sapphire: 'sapphire',
-    Quartz: 'quartz',
-    Indigo: 'indigo',
-    Onyx: 'onyx',
+    // Sapphire: 'sapphire',
+    Mattermost: 'denim',
+    Organization: 'denim',
+    'Mattermost Dark': 'denim',
+    'Windows Dark': 'denim'
 };
 
 // setThemeDefaults will set defaults on the theme for any unset properties.

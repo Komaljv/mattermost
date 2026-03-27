@@ -15,7 +15,6 @@ export default class ResetPasswordPage {
     readonly formContainer;
 
     readonly header;
-    readonly footer;
 
     constructor(page: Page) {
         this.page = page;
@@ -27,7 +26,6 @@ export default class ResetPasswordPage {
         this.formContainer = page.locator('.signup-team__container');
 
         this.header = new components.MainHeader(page.locator('.signup-header'));
-        this.footer = new components.Footer(page.locator('#footer_section'));
     }
 
     async toBeVisible() {

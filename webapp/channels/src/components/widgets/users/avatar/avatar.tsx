@@ -8,7 +8,7 @@ import {useIntl} from 'react-intl';
 
 import {Client4} from 'mattermost-redux/client';
 
-import BotDefaultIcon from 'images/bot_default_icon.png';
+import defaultAvatarIcon from 'images/brainerhub_logo.png';
 
 import './avatar.scss';
 
@@ -82,7 +82,7 @@ const Avatar = forwardRef<HTMLElement, Props & Attrs>(({
     }
 
     function handleOnError(e: SyntheticEvent<HTMLImageElement, Event>) {
-        const fallbackSrc = (url && isURLForUser(url)) ? replaceURLWithDefaultImageURL(url) : BotDefaultIcon;
+        const fallbackSrc = (url && isURLForUser(url)) ? replaceURLWithDefaultImageURL(url) : defaultAvatarIcon;
 
         if (e.currentTarget.src !== fallbackSrc) {
             e.currentTarget.src = fallbackSrc;

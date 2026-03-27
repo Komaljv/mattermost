@@ -246,16 +246,7 @@ const OnBoardingTaskList = (): JSX.Element | null => {
     return (
         <>
             <CompletedAnimation completed={showAnimation}/>
-            <Button
-                onClick={toggleTaskList}
-                ref={(element) => setTrigger(element)}
-                open={open}
-                data-cy='onboarding-task-list-action-button'
-                aria-label={formatMessage({id: 'onboardingTask.checklist.start_onboarding_process', defaultMessage: 'Start the onboarding process.'})}
-            >
-                {open ? <CloseIcon size={20}/> : <PlaylistCheckIcon size={20}/>}
-                {itemsLeft !== 0 && (<span>{itemsLeft}</span>)}
-            </Button>
+           
             <TaskListPopover
                 isVisible={open}
                 trigger={trigger}

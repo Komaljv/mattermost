@@ -42,6 +42,7 @@ body {
     flex-direction: column;
     padding: 40px 0 0;
     margin: 0 auto;
+    text-align: center;
 
     .medium-center {
         width: 70%;
@@ -466,4 +467,9 @@ body {
 .verify_panel {
     max-width: 380px;
     margin: 60px auto auto;
+}
+button#passwordResetButton{
+    text-align: center;
+    width:100%;
+    background: #BF4252!important;;
 }

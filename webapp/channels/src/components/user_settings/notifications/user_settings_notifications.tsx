@@ -27,7 +27,6 @@ import DesktopAndMobileNotificationSettings from './desktop_and_mobile_notificat
 import DesktopNotificationSoundsSettings from './desktop_notification_sounds_setting';
 import EmailNotificationSetting from './email_notification_setting';
 import ManageAutoResponder from './manage_auto_responder/manage_auto_responder';
-import SendTestNotificationNotice from './send_test_notification_notice';
 
 import SettingDesktopHeader from '../headers/setting_desktop_header';
 import SettingMobileHeader from '../headers/setting_mobile_header';
@@ -1002,33 +1001,7 @@ class NotificationsTab extends React.PureComponent<Props, State> {
                 <div
                     className='user-settings'
                 >
-                    <SettingDesktopHeader
-                        id='notificationSettingsTitle'
-                        text={
-                            <FormattedMessage
-                                id='user.settings.notifications.header'
-                                defaultMessage='Notifications'
-                            />
-                        }
-                        info={
-                            <FormattedMessage
-                                id='user.settings.notifications.learnMore'
-                                defaultMessage='<a>Learn more about notifications</a>'
-                                values={{
-                                    a: (chunks) => ((
-                                        <ExternalLink
-                                            location='user_settings_notifications'
-                                            href='https://mattermost.com/pl/about-notifications'
-                                            className='btn btn-link'
-                                        >
-                                            <LightbulbOutlineIcon className='circular-border'/>
-                                            <span>{chunks}</span>
-                                        </ExternalLink>
-                                    )),
-                                }}
-                            />
-                        }
-                    />
+                   
                     <div className='divider-dark first'/>
                     <DesktopAndMobileNotificationSettings
                         active={this.props.activeSection === UserSettingsNotificationSections.DESKTOP_AND_MOBILE}
@@ -1108,7 +1081,6 @@ class NotificationsTab extends React.PureComponent<Props, State> {
                             {keywordsWithHighlightSection}
                         </>
                     )}
-                    <SendTestNotificationNotice adminMode={this.props.adminMode}/>
                 </div>
             </div>
 

@@ -300,7 +300,7 @@
     },
     "ThemeSettings": {
         "EnableThemeSelection": true,
-        "DefaultTheme": "default",
+        "DefaultTheme": "denim",
         "AllowCustomThemes": true,
         "AllowedThemes": []
     },

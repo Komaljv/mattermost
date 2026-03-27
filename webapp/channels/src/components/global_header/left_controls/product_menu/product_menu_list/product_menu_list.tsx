@@ -108,7 +108,7 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
     };
 
     const someIntegrationEnabled = enableIncomingWebhooks || enableOutgoingWebhooks || enableCommands || enableOAuthServiceProvider || canManageSystemBots;
-    const showIntegrations = !isMobile && someIntegrationEnabled && canManageIntegrations;
+    const showIntegrations = !isMobile && someIntegrationEnabled && canManageIntegrations && isAdmin;
 
     return (
         <Menu.Group>
@@ -201,26 +201,14 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
                     <Menu.ItemToggleModalRedux
                         id='marketplaceModal'
                         modalId={ModalIdentifiers.PLUGIN_MARKETPLACE}
-                        show={isMessaging && !isMobile && enablePluginMarketplace}
+                        show={isAdmin && isMessaging && !isMobile && enablePluginMarketplace}
                         dialogType={MarketplaceModal}
                         text={formatMessage({id: 'navbar_dropdown.marketplace', defaultMessage: 'App Marketplace'})}
                         icon={<ViewGridPlusOutlineIcon size={18}/>}
                     />
                 </TeamPermissionGate>
-                <Menu.ItemExternalLink
-                    id='nativeAppLink'
-                    show={appDownloadLink && !UserAgent.isMobileApp()}
-                    url={makeUrlSafe(appDownloadLink)}
-                    text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
-                    icon={<DownloadOutlineIcon size={18}/>}
-                />
-                <Menu.ItemToggleModalRedux
-                    id='about'
-                    modalId={ModalIdentifiers.ABOUT}
-                    dialogType={AboutBuildModal}
-                    text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: siteName})}
-                    icon={<InformationOutlineIcon size={18}/>}
-                />
+                
+               
             </div>
         </Menu.Group>
     );
